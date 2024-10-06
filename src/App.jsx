@@ -1,15 +1,81 @@
+import React, { useState } from 'react'
 /*Q1. JS Variable needs to be created here. Below variable is just an example. Try to add more attributes.*/
+const TravellerForm = () => {
+  // initial
+  const [travellers, setTravellers] = useState(initialTravellers);
+  const [newTraveller, setNewTraveller] = useState({
+    id: travellers.length + 1,
+    name: '',
+    phone: '',
+    bookingTime: new Date()
+  });
+
+  // handle change
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewTraveller(prevData => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+
+  // submit new
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setTravellers([...travellers, newTraveller]);
+    setNewTraveller({
+      id: travellers.length + 2, // refresh id
+      name: '',
+      phone: '',
+      bookingTime: new Date()
+    });
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name:
+          <input type="text" name="name" value={newTraveller.name} onChange={handleChange} />
+        </label>
+        <br />
+        <label>
+          Phone Number:
+          <input type="tel" name="phone" value={newTraveller.phone} onChange={handleChange} />
+        </label>
+        <br />
+        <button type="submit">Add Traveller</button>
+      </form>
+
+      <h2>Traveller List</h2>
+      <ul>
+        {travellers.map(traveller => (
+          <li key={traveller.id}>
+            {traveller.name} - {traveller.phone} (Booked on: {traveller.bookingTime.toLocaleString()})
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+// initialTravellers example
 const initialTravellers = [
   {
-    id: 1, name: 'Jack', phone: 88885555,
+    id: 1,
+    name: 'Jack',
+    phone: 88885555,
     bookingTime: new Date(),
   },
   {
-    id: 2, name: 'Rose', phone: 88884444,
+    id: 2,
+    name: 'Rose',
+    phone: 88884444,
     bookingTime: new Date(),
   },
 ];
 
+export default TravellerForm;
 
 function TravellerRow(props) {
   {/*Q3. Placeholder to initialize local variable based on traveller prop.*/}
