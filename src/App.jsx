@@ -17,6 +17,11 @@ function TravellerRow(props) {
   return (
     <tr>
 	  {/*Q3. Placeholder for rendering one row of a table with required traveller attribute values.*/}
+    <td>{props.traveller.id}</td>
+    <td>{props.traveller.name}</td>
+    <td>{props.traveller.phone}</td>
+    <td>{props.traveller.bookingTime}</td>    
+    
     </tr>
   );
 }
@@ -38,6 +43,9 @@ function Display(props) {
       </thead>
       <tbody>
         {/*Q3. write code to call the JS variable defined at the top of this function to render table rows.*/}
+        {props.travellers.map(traveller => (
+          <TravellerRow key={props.traveller.id} traveller={props.traveller} />
+        ))}
       </tbody>
     </table>
   );
@@ -52,13 +60,25 @@ class Add extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     /*Q4. Fetch the passenger details from the add form and call bookTraveller()*/
+    const form = document.forms.addTraveller;
+    const maxId = Math.max(...this.props.travellers.map(t => t.id), 0);
+    this.props.bookTraveller({ 
+      id: maxId + 1,
+      name: form.travellername.value, 
+      phone: form.travellerphone.value,
+      bookingTime: new Date()
+    });
   }
 
   render() {
     return (
       <form name="addTraveller" onSubmit={this.handleSubmit}>
 	    {/*Q4. Placeholder to enter passenger details. Below code is just an example.*/}
+        <input type="text" name="travellerid" placeholder="ID" />      
         <input type="text" name="travellername" placeholder="Name" />
+        <input type = "text" name = "travellerphone" placeholder = "Phone" />
+        <input type="text" name="travellerbookingtime" placeholder="Booking Time" />
+        <input type="text" name="travellerseat" placeholder="Seat" />
         <button>Add</button>
       </form>
     );
@@ -95,6 +115,7 @@ class Homepage extends React.Component {
 	return (
 	<div>
 		{/*Q2. Placeholder for Homepage code that shows free seats visually.*/}
+    
 	</div>);
 	}
 }
@@ -127,6 +148,9 @@ class TicketToRide extends React.Component {
 
   bookTraveller(passenger) {
 	    /*Q4. Write code to add a passenger to the traveller state variable.*/
+      this.setState(prevState => ({
+        travellers: [...prevState.travellers, passenger]
+      }));
   }
 
   deleteTraveller(passenger) {
