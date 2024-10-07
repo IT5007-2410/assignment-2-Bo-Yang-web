@@ -73,7 +73,7 @@ class Add extends React.Component {
     return (
       <form name="addTraveller" onSubmit={this.handleSubmit}>
 	    {/*Q4. Placeholder to enter passenger details. Below code is just an example.*/}
-        <input type="text" name="travellerid" placeholder="ID" />      
+        {/* <input type="text" name="travellerid" placeholder="ID" />       */}
         <input type="text" name="travellername" placeholder="Name" />
         <input type = "text" name = "travellerphone" placeholder = "Phone" />
         {/* <input type="text" name="travellerbookingtime" placeholder="Booking Time" /> */}
