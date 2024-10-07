@@ -44,7 +44,7 @@ function Display(props) {
       <tbody>
         {/*Q3. write code to call the JS variable defined at the top of this function to render table rows.*/}
         {props.travellers.map(traveller => (
-          <TravellerRow key={props.traveller.id} traveller={props.traveller} />
+          <TravellerRow key={traveller.id} traveller={traveller} />
         ))}
       </tbody>
     </table>
