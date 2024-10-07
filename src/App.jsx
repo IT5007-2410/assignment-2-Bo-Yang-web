@@ -20,8 +20,7 @@ function TravellerRow(props) {
     <td>{props.traveller.id}</td>
     <td>{props.traveller.name}</td>
     <td>{props.traveller.phone}</td>
-    <td>{props.traveller.bookingTime}</td>    
-    
+    <td>{props.traveller.bookingTime.toLocaleString()}</td>   
     </tr>
   );
 }
@@ -164,6 +163,9 @@ class TicketToRide extends React.Component {
     const updatedTravellers = travellers.filter(t => t.id !== passenger.id);
     if (updatedTravellers.length === travellers.length) {
       alert('Passenger not found!');
+    }
+    else{
+      alert('sucessfully deleted');
     }
     this.setState({ travellers: updatedTravellers });
 
