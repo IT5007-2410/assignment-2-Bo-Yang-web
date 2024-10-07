@@ -155,6 +155,7 @@ class TicketToRide extends React.Component {
       this.setState(prevState => ({
         travellers: [...prevState.travellers, passenger]
       }));
+      alert('sucessfully added');
   }
 
   deleteTraveller(passenger) {
