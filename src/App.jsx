@@ -77,7 +77,7 @@ class Add extends React.Component {
         <input type="text" name="travellerid" placeholder="ID" />      
         <input type="text" name="travellername" placeholder="Name" />
         <input type = "text" name = "travellerphone" placeholder = "Phone" />
-        <input type="text" name="travellerbookingtime" placeholder="Booking Time" />
+        {/* <input type="text" name="travellerbookingtime" placeholder="Booking Time" /> */}
         {/* <input type="text" name="travellerseat" placeholder="Seat" /> */}
         <button>Add</button>
       </form>
@@ -176,7 +176,7 @@ class TicketToRide extends React.Component {
     <button onClick={() => this.setSelector('homepage')}>Home</button>
     <button onClick={() => this.setSelector('addTraveller')}>Add Traveller</button>
     <button onClick={() => this.setSelector('displayTravellers')}>Display Travellers</button>
-    <button onClick={() => this.setSelector('delete Travellers')}>Delete Traveller</button>
+    <button onClick={() => this.setSelector('deleteTravellers')}>Delete Traveller</button>
 	    {/*Q2. Code for Navigation bar. Use basic buttons to create a nav bar. Use states to manage selection.*/}
 	</div>
 	<div>
