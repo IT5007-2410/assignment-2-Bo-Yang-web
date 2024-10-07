@@ -78,7 +78,7 @@ class Add extends React.Component {
         <input type="text" name="travellername" placeholder="Name" />
         <input type = "text" name = "travellerphone" placeholder = "Phone" />
         <input type="text" name="travellerbookingtime" placeholder="Booking Time" />
-        <input type="text" name="travellerseat" placeholder="Seat" />
+        {/* <input type="text" name="travellerseat" placeholder="Seat" /> */}
         <button>Add</button>
       </form>
     );
@@ -94,13 +94,18 @@ class Delete extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     /*Q5. Fetch the passenger details from the deletion form and call deleteTraveller()*/
+    const form = document.forms.deleteTraveller;
+    this.props.deleteTraveller({ 
+      name: form.travellername.value
+    });
+    
   }
 
   render() {
     return (
       <form name="deleteTraveller" onSubmit={this.handleSubmit}>
 	    {/*Q5. Placeholder form to enter information on which passenger's ticket needs to be deleted. Below code is just an example.*/}
-	<input type="text" name="travellername" placeholder="Name" />
+        <input type="text" name="travellerid" placeholder="ID" />  
         <button>Delete</button>
       </form>
     );
@@ -156,7 +161,7 @@ class TicketToRide extends React.Component {
   deleteTraveller(passenger) {
 	  /*Q5. Write code to delete a passenger from the traveller state variable.*/
     const { travellers } = this.state;
-    const updatedTravellers = travellers.filter(t => t.name !== passenger.name);
+    const updatedTravellers = travellers.filter(t => t.id !== passenger.id);
     if (updatedTravellers.length === travellers.length) {
       alert('Passenger not found!');
     }
