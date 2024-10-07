@@ -155,6 +155,13 @@ class TicketToRide extends React.Component {
 
   deleteTraveller(passenger) {
 	  /*Q5. Write code to delete a passenger from the traveller state variable.*/
+    const { travellers } = this.state;
+    const updatedTravellers = travellers.filter(t => t.name !== passenger.name);
+    if (updatedTravellers.length === travellers.length) {
+      alert('Passenger not found!');
+    }
+    this.setState({ travellers: updatedTravellers });
+
   }
   render() {
     return (
@@ -171,9 +178,13 @@ class TicketToRide extends React.Component {
 		{/*Only one of the below four divisions is rendered based on the button clicked by the user.*/}
 		{/*Q2 and Q6. Code to call Instance that draws Homepage. Homepage shows Visual Representation of free seats.*/}
 		{/*Q3. Code to call component that Displays Travellers.*/}
-		
 		{/*Q4. Code to call the component that adds a traveller.*/}
 		{/*Q5. Code to call the component that deletes a traveller based on a given attribute.*/}
+    {this.state.selector === 'homepage' && <Homepage freeSeats={this.freeSeats}/>}
+    {this.state.selector === 'addTraveller' && <Add bookTraveller={this.bookTraveller} />}
+    {this.state.selector === 'displayTravellers' && <Display travellers={this.state.travellers} />}
+    {this.state.selector === 'deleteTravellers' && <Delete deleteTraveller={this.deleteTraveller} />}
+
 	</div>
       </div>
     );
