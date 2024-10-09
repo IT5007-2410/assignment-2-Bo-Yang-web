@@ -119,7 +119,9 @@ class Homepage extends React.Component {
 	return (
 	<div>
 		{/*Q2. Placeholder for Homepage code that shows free seats visually.*/}
-    
+    <h2>Welcome to the Ticket Reservation System</h2>
+        {/* 调用 FreeSeat 组件并传递座位参数 */}
+        <FreeSeat availableSeats={10} totalSeats={4} />
 	</div>);
 	}
 }
@@ -198,7 +200,42 @@ class TicketToRide extends React.Component {
     );
   }
 }
+const freeSeats = ({ totalSeats = 10, availableSeats }) => {
+  const reservedSeats = totalSeats - availableSeats;
 
+  return (
+    <div>
+      <h2>Seat Arrangement</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 40px)', gap: '10px' }}>
+        {Array.from({ length: availableSeats }).map((_, index) => (
+          <div
+            key={`available-${index}`}
+            style={{
+              width: '40px',
+              height: '40px',
+              backgroundColor: 'green',
+              border: '1px solid black',
+            }}
+          ></div>
+        ))}
+        {Array.from({ length: reservedSeats }).map((_, index) => (
+          <div
+            key={`reserved-${index}`}
+            style={{
+              width: '40px',
+              height: '40px',
+              backgroundColor: 'grey',
+              border: '1px solid black',
+            }}
+          ></div>
+        ))}
+      </div>
+      <p>{`Available Seats: ${availableSeats}`}</p>
+    </div>
+  );
+};
+
+export default freeSeats;
 const element = <TicketToRide />;
 
 ReactDOM.render(element, document.getElementById('contents'));
