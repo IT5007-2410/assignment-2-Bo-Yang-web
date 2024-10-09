@@ -145,7 +145,7 @@ class TicketToRide extends React.Component {
 		{/*Q3. Code to call component that Displays Travellers.*/}
 		{/*Q4. Code to call the component that adds a traveller.*/}
 		{/*Q5. Code to call the component that deletes a traveller based on a given attribute.*/}
-    {this.state.selector === 'homepage' && <Homepage travellers={travellers} totalSeats={10} />}
+    {this.state.selector === 'homepage' && <Homepage travellers={this.state.travellers} totalSeats={10} />}
     {this.state.selector === 'addTraveller' && <Add bookTraveller={this.bookTraveller} travellers={this.state.travellers} />}
     {this.state.selector === 'displayTravellers' && <Display travellers={this.state.travellers} />}
     {this.state.selector === 'deleteTravellers' && <Delete deleteTraveller={this.deleteTraveller} travellers={this.state.travellers}/>}
