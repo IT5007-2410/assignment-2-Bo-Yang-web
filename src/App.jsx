@@ -1,4 +1,4 @@
-import React from 'react'
+
 /*Q1. JS Variable needs to be created here. Below variable is just an example. Try to add more attributes.*/
 freeSeats = 10-length(travellers);
 reservedSeats = length(travellers);
@@ -75,7 +75,7 @@ class Homepage extends React.Component {
             ></div>
           ))}
         </div>
-        <p>{`Available Seats: ${availableSeats}`}</p>
+        <p>{`Available Seats: ${freeSeats}`}</p>
 	</div>);
 	}
 }
