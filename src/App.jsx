@@ -20,7 +20,10 @@ function TravellerRow(props) {
     <td>{props.traveller.id}</td>
     <td>{props.traveller.name}</td>
     <td>{props.traveller.phone}</td>
-    <td>{props.traveller.bookingTime.toLocaleString()}</td>   
+    <td>{props.traveller.bookingTime.toLocaleString()}</td>
+    <td>
+        <button onClick={() => props.deleteTraveller(props.traveller.id)}>Delete</button>
+      </td>   
     </tr>
   );
 }
@@ -43,10 +46,11 @@ function Display(props) {
       <tbody>
         {/*Q3. write code to call the JS variable defined at the top of this function to render table rows.*/}
         {props.travellers.map(traveller => (
-          <TravellerRow key={traveller.id} traveller={traveller} />
+          <TravellerRow key={traveller.id} traveller={traveller} deleteTraveller={props.deleteTraveller} />
         ))}
       </tbody>
     </table>
+    
   );
 }
 
@@ -219,7 +223,7 @@ class TicketToRide extends React.Component {
 		{/*Q5. Code to call the component that deletes a traveller based on a given attribute.*/}
     {this.state.selector === 'homepage' && <Homepage travellers={this.state.travellers} totalSeats={10} />}
     {this.state.selector === 'addTraveller' && <Add bookTraveller={this.bookTraveller} travellers={this.state.travellers} />}
-    {this.state.selector === 'displayTravellers' && <Display travellers={this.state.travellers} />}
+    {this.state.selector === 'displayTravellers' && <Display travellers={this.state.travellers} deleteTraveller={this.deleteTraveller} />}
     {this.state.selector === 'deleteTravellers' && <Delete deleteTraveller={this.deleteTraveller} travellers={this.state.travellers}/>}
 
 	</div>
