@@ -1,7 +1,6 @@
 
 /*Q1. JS Variable needs to be created here. Below variable is just an example. Try to add more attributes.*/
-freeSeats = 10-length(travellers);
-reservedSeats = length(travellers);
+const totalSeats = 10;
 const initialTravellers = [
   {
     id: 1, name: 'Jack', phone: 88885555,
@@ -46,7 +45,9 @@ class Homepage extends React.Component {
 	super();
 	}
 	render(){
-  const totalSeats = 10;  
+    const { totalSeats, travellers } = this.props
+    const freeSeats = totalSeats - travellers.length;
+    const reservedSeats = travellers.length;
 	return (
 	<div>
 		{/*Q2. Placeholder for Homepage code that shows free seats visually.*/}
@@ -144,7 +145,7 @@ class TicketToRide extends React.Component {
 		{/*Q3. Code to call component that Displays Travellers.*/}
 		{/*Q4. Code to call the component that adds a traveller.*/}
 		{/*Q5. Code to call the component that deletes a traveller based on a given attribute.*/}
-    {this.state.selector === 'homepage' && <Homepage freeSeats={this.freeSeats}/>}
+    {this.state.selector === 'homepage' && <Homepage travellers={travellers} totalSeats={10} />}
     {this.state.selector === 'addTraveller' && <Add bookTraveller={this.bookTraveller} travellers={this.state.travellers} />}
     {this.state.selector === 'displayTravellers' && <Display travellers={this.state.travellers} />}
     {this.state.selector === 'deleteTravellers' && <Delete deleteTraveller={this.deleteTraveller} travellers={this.state.travellers}/>}
