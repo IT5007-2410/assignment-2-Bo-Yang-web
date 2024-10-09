@@ -22,8 +22,8 @@ function TravellerRow(props) {
     <td>{props.traveller.phone}</td>
     <td>{props.traveller.bookingTime.toLocaleString()}</td>
     <td>
-        <button onClick={() => props.deleteTraveller(props.traveller.id)}>Delete</button>
-      </td>   
+      <button onClick={() => props.deleteTraveller(props.traveller)}>Delete</button>
+    </td>   
     </tr>
   );
 }
